@@ -1,0 +1,61 @@
+
+# to arrange and form the second array
+def isrearranging(arr1, arr2, m, n):
+    for i in range(n):
+	    if(arr1[i] != arr2[i]):
+	        print("Replace value %(n)s with %(b)s in arr1" % {'n': arr1[i], 'b': arr2[i]})	
+
+	 
+# to identify the missing values			
+def ismissing(arr1, arr2, m, n):
+    a = m
+    b = n
+    c = 0
+    if a > b:
+        set_diff = setdiff1d(arr1, arr2)
+        print("\n From Array 1 Drop Value:\n",set_diff)
+
+    elif a < b:
+        set_diff = np.setdiff1d(arr2, arr1)
+        print("\n In Array 2 add value:",set_diff)
+    else:
+        print('No Changes Required in both arrays')
+    
+    return 1
+
+        
+#to check if the second array is subset of the first one
+def isSubset(arr1, arr2, m, n):
+	i = 0
+	j = 0
+	for i in range(n):
+		for j in range(m):
+			if(arr2[i] == arr1[j]):
+			    break
+
+		if (j == m):
+		    return 0
+
+	return 1
+
+
+# Driver code
+from numpy import * 
+if __name__ == "__main__":
+
+	arr1 = array([1, 2, 3, 4, 5, 6])
+	arr2 = array([1, 2, 4, 3, 5])
+
+    
+	m = len(arr1)
+	n = len(arr2)
+        
+        
+	if(isSubset(arr1, arr2, m, n)):
+		print("arr2[] is subset of arr1[] ")
+		ismissing(arr1, arr2, m, n)
+		isrearranging(arr1, arr2, m, n)
+	else:
+		print("arr2[] is not a subset of arr1[]")
+
+
